@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MageInsight_Contact::contacts" title="Contacts" translate="title" module="MageInsight_Contact" sortOrder="80" resource="Magento_Contact::contact" parent="Magento_Customer::customer"/>
+        <add id="MageInsight_Contact::contact_list" title="All Contacts" translate="title" module="MageInsight_Contact" sortOrder="10" parent="MageInsight_Contact::contacts" action="contact/list/" resource="Magento_Contact::contact"/>
+    </menu>
+</config>

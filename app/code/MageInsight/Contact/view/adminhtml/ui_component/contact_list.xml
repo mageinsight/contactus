@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">contact_list.contact_list_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>contact_list_columns</spinner>
+		<deps>
+			<dep>contact_list.contact_list_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="contact_list_data_source">
+		<settings>
+			<storageConfig>
+        <param name="indexField" xsi:type="string">contact_id</param>
+      </storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Magento_Contact::Contacts</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="contact_list_data_source">
+			<settings>
+				<requestFieldName>contact_id</requestFieldName>
+				<primaryFieldName>contact_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+    <exportButton class="Magento\Ui\Component\ExportButton">
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="options" xsi:type="array">
+            <item name="csv" xsi:type="array">
+              <item name="value" xsi:type="string">csv</item>
+              <item name="label" xsi:type="string" translate="true">CSV</item>
+              <item name="url" xsi:type="string">ktpl_embassy/export/gridToCsv</item>
+            </item>
+            <item name="xml" xsi:type="array">
+              <item name="value" xsi:type="string">xml</item>
+              <item name="label" xsi:type="string" translate="true">Excel XML</item>
+              <item name="url" xsi:type="string">mui/export/gridToXml</item>
+            </item>
+          </item>
+        </item>
+      </argument>
+    </exportButton>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="contact_list_columns">
+		<!-- <selectionsColumn name="ids">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="resizeEnabled" xsi:type="boolean">false</item>
+					<item name="resizeDefaultWidth" xsi:type="string">55</item>
+					<item name="indexField" xsi:type="string">contact_id</item>
+					<item name="sortOrder" xsi:type="number">1</item>
+				</item>
+			</argument>
+		</selectionsColumn> -->
+		<column name="contact_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<visible>true</visible>
+				<label translate="true">Name</label>
+			</settings>
+		</column>
+		<column name="email">
+			<settings>
+				<filter>text</filter>
+				<visible>true</visible>
+				<label translate="true">Email</label>
+			</settings>
+		</column>
+		<column name="telephone">
+			<settings>
+				<filter>text</filter>
+				<visible>true</visible>
+				<label translate="true">Phone</label>
+			</settings>
+		</column>
+		<column name="comment">
+			<settings>
+				<filter>text</filter>
+				<visible>true</visible>
+				<label translate="true">Comment</label>
+			</settings>
+		</column>
+	</columns>
+</listing>
